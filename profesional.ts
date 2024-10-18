@@ -20,6 +20,7 @@ export class Profesional{
         this.oscarsNumber = oscarsNumber;
         this.profession = profession;
     }
+    
     //Método
     public printAllP(): void {
         console.log("    Nombre: " + this.name);
