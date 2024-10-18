@@ -41,7 +41,11 @@ movie2.distributor = "Su madre"
 let arrayPelis:Movie[] = [movie1, movie2];
 let IMDBPeliculas:IMDB = new IMDB(arrayPelis);
 
+// for (let i = 0; i < IMDBPeliculas.peliculas.length; i++) {
+//     IMDBPeliculas.peliculas[i].printAllM();
+// }
 
-for (let i = 0; i < IMDBPeliculas.peliculas.length; i++) {
-    IMDBPeliculas.peliculas[i].printAllM();
-}
+// const fs = require('fs');
+import {writeFileSync} from "fs";
+let data:string = JSON.stringify(IMDBPeliculas);
+writeFileSync("imdbBBDD.json", data);
