@@ -1,6 +1,8 @@
 import { IMDB } from "./IMDB";
 import {Movie} from "./movie";
 import {Profesional} from "./profesional";
+import {readFileSync} from "fs";
+import {writeFileSync} from "fs";
 
 //--------------------------movie1---------------------------------
 let movie1:Movie = new Movie("Tu casa", 2000, "España", "Acción");
@@ -36,16 +38,27 @@ movie2.mainCharacterName = "Antonio Jr";
 movie2.producer = "Españita goberment";
 movie2.distributor = "Su madre"
 
-//----------------------------------------------------------------------
+//----------------Reto5----------------------
 
 let arrayPelis:Movie[] = [movie1, movie2];
 let IMDBPeliculas:IMDB = new IMDB(arrayPelis);
 
-// for (let i = 0; i < IMDBPeliculas.peliculas.length; i++) {
-//     IMDBPeliculas.peliculas[i].printAllM();
-// }
+for (let i = 0; i < IMDBPeliculas.peliculas.length; i++) {
+    IMDBPeliculas.peliculas[i].printAllM();
+}
 
-// const fs = require('fs');
-import {writeFileSync} from "fs";
+//------------Reto6----------------
+
 let data:string = JSON.stringify(IMDBPeliculas);
 writeFileSync("imdbBBDD.json", data);
+
+let data2:string = readFileSync("./imdbBBDD.json", "utf8");
+let objt:IMDB = JSON.parse(data2);
+
+console.log(objt);
+
+//---------------Reto 7--------------------
+
+IMDBPeliculas.escribirEnFicheroJSON("./imdbBBDD.json");
+
+console.log(IMDBPeliculas.obtenerInstanciaIMDB("./imdbBBDD.json"));
